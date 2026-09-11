@@ -1,0 +1,76 @@
+:root {
+  --ink: #f5f7ff;
+  --muted: #8b91a9;
+  --panel: rgba(20, 24, 45, 0.78);
+  --line: rgba(140, 153, 209, 0.2);
+  --cyan: #57f3dc;
+  --pink: #ff4e97;
+  --yellow: #ffd85a;
+  --bg: #0b0d18;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: "Chakra Petch", sans-serif;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px), radial-gradient(circle at 18% 10%, rgba(255, 78, 151, .16), transparent 32%), radial-gradient(circle at 88% 82%, rgba(87, 243, 220, .11), transparent 34%);
+  background-size: 32px 32px, 32px 32px, auto, auto;
+}
+
+.game-shell { width: min(100% - 32px, 960px); margin: 0 auto; padding: 28px 0 22px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 0 4px 23px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 10px; letter-spacing: .16em; font-size: 18px; font-weight: 700; }
+.brand-mark { display: grid; place-items: center; width: 24px; height: 24px; color: var(--bg); background: var(--cyan); font-size: 21px; line-height: 1; }
+.status { display: flex; align-items: center; gap: 8px; color: var(--muted); font: 11px "Space Mono", monospace; letter-spacing: .08em; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+.game-layout { display: grid; grid-template-columns: minmax(320px, 500px) 260px; justify-content: center; gap: 46px; padding: 42px 0 34px; }
+.board-frame { width: min(100%, 440px); justify-self: center; }
+.board-heading { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--muted); font: 11px "Space Mono", monospace; letter-spacing: .14em; }
+.board-heading span:last-child { color: var(--cyan); }
+.canvas-wrap { position: relative; padding: 10px; background: #101427; border: 1px solid var(--line); box-shadow: 0 0 0 1px rgba(0,0,0,.35), 0 20px 45px rgba(0,0,0,.28); }
+#gameCanvas { display: block; width: 100%; height: auto; aspect-ratio: 1 / 2; background: #090b15; image-rendering: pixelated; }
+.overlay { position: absolute; inset: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; background: rgba(9, 11, 21, .86); }
+.overlay.hidden { display: none; }
+.overlay-kicker, .panel-label { margin: 0; color: var(--cyan); font: 11px "Space Mono", monospace; letter-spacing: .16em; }
+.overlay h1 { margin: 15px 0 7px; font-size: clamp(32px, 7vw, 54px); line-height: 1; letter-spacing: .04em; }
+.overlay p:not(.overlay-kicker) { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+.primary-button, .secondary-button { border: 0; color: var(--bg); font: 700 13px "Chakra Petch", sans-serif; letter-spacing: .07em; cursor: pointer; transition: transform .16s ease, filter .16s ease; }
+.primary-button { padding: 13px 26px; background: var(--pink); box-shadow: 4px 4px 0 var(--cyan); }
+.primary-button:hover, .secondary-button:hover { filter: brightness(1.14); transform: translateY(-2px); }
+.sidebar { display: flex; flex-direction: column; gap: 15px; }
+.panel { padding: 20px; background: var(--panel); border: 1px solid var(--line); }
+.score-panel { border-top: 2px solid var(--pink); }
+.score-value { margin: 9px 0 17px; color: var(--yellow); font: 700 clamp(26px, 5vw, 35px) "Space Mono", monospace; letter-spacing: .04em; }
+.stats-row { display: flex; justify-content: space-between; padding-top: 10px; margin-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font: 11px "Space Mono", monospace; }
+.stats-row strong { color: var(--ink); font-weight: 400; }
+.next-panel { text-align: center; }
+.next-panel .panel-label { display: block; text-align: left; }
+#nextCanvas { display: block; width: 128px; height: 128px; margin: 13px auto 0; background: rgba(4, 6, 14, .45); image-rendering: pixelated; }
+.controls-panel { display: grid; gap: 10px; }
+.key-row { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+.key { display: inline-grid; place-items: center; min-width: 27px; height: 25px; padding: 0 6px; color: var(--ink); background: #292f4b; border-bottom: 2px solid #101326; font: 11px "Space Mono", monospace; }
+.key.wide { min-width: 59px; font-size: 9px; }
+.button-row { display: flex; gap: 9px; }
+.secondary-button { flex: 1; padding: 11px 8px; color: var(--ink); background: #242a45; border: 1px solid var(--line); }
+.secondary-button:disabled { opacity: .38; cursor: not-allowed; }
+footer { padding-top: 4px; color: #555d7b; text-align: center; font: 10px "Space Mono", monospace; letter-spacing: .12em; }
+footer span { padding: 0 8px; color: var(--pink); }
+
+@media (max-width: 720px) {
+  .game-shell { width: min(100% - 24px, 440px); padding-top: 18px; }
+  .topbar { padding-bottom: 16px; }
+  .brand { font-size: 15px; }
+  .status { font-size: 9px; }
+  .game-layout { display: flex; flex-direction: column; gap: 20px; padding: 24px 0 25px; }
+  .board-frame { width: min(100%, 330px); }
+  .sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .score-panel { grid-column: span 2; }
+  .controls-panel { grid-column: span 2; grid-template-columns: 1fr 1fr; }
+  .controls-panel .panel-label { grid-column: span 2; }
+  .button-row { grid-column: span 2; }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKY RAID // VERTICAL ASSAULT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>SKY RAID</span></div>
+      <div class="status"><span id="statusDot" class="status-dot"></span><span id="statusText">STANDBY</span></div>
+    </header>
+
+    <section class="game-layout">
+      <div class="board-frame">
+        <div class="board-heading"><span>TACTICAL FEED / SECTOR 07</span><span id="waveLabel">WAVE 01</span></div>
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" width="480" height="720" aria-label="종스크롤 슈팅 게임 화면"></canvas>
+          <div id="overlay" class="overlay">
+            <p class="overlay-kicker">MISSION BRIEF // 07</p>
+            <h1>SKY RAID</h1>
+            <p>적 편대를 격추하고 지상 기지를 폭격하세요.</p>
+            <button id="startButton" class="primary-button">출격하기 <span>→</span></button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="panel score-panel">
+          <div class="panel-label">MISSION SCORE</div>
+          <div id="score" class="score-value">000000</div>
+          <div class="stats-row"><span>HIGH SCORE</span><strong id="highScore">000000</strong></div>
+          <div class="stats-row"><span>WAVE</span><strong id="wave">01</strong></div>
+          <div class="stats-row"><span>ARMOR</span><strong id="lives">● ● ●</strong></div>
+          <div class="stats-row"><span>POWER</span><strong id="power">READY</strong></div>
+        </section>
+
+        <section class="panel radar-panel">
+          <div class="panel-label">RADAR</div>
+          <div class="radar"><span id="radarSweep"></span><i></i><i></i><i></i></div>
+        </section>
+
+        <section class="panel controls-panel">
+          <div class="panel-label">FLIGHT CONTROLS</div>
+          <div class="key-row"><span class="key">← ↑ ↓ →</span><span>기체 이동</span></div>
+          <div class="key-row"><span class="key accent">Z</span><span>기관포 발사</span></div>
+          <div class="key-row"><span class="key accent">X</span><span>지상 폭탄</span></div>
+          <div class="key-row"><span class="key">P</span><span>일시정지</span></div>
+        </section>
+
+        <div class="button-row">
+          <button id="pauseButton" class="secondary-button" disabled>일시정지</button>
+          <button id="restartButton" class="secondary-button">다시 출격</button>
+        </div>
+      </aside>
+    </section>
+
+    <footer>HTML5 <span>•</span> CSS3 <span>•</span> JAVASCRIPT <span>•</span> BUILD 02</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

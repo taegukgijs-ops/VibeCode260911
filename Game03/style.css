@@ -1,0 +1,63 @@
+:root {
+  --bg: #0d1014;
+  --arena: #111a1d;
+  --panel: rgba(21, 29, 33, .9);
+  --line: rgba(177, 203, 185, .2);
+  --ink: #f5f5e9;
+  --muted: #8f9b9a;
+  --ember: #ff895c;
+  --gold: #ffd166;
+  --mint: #9ee6aa;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; color: var(--ink); background: var(--bg); font-family: "Chakra Petch", sans-serif; background-image: radial-gradient(circle at 10% 15%, rgba(255, 137, 92, .12), transparent 28%), linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: auto, 32px 32px, 32px 32px; }
+button { font: inherit; }
+.game-shell { width: min(100% - 32px, 1180px); margin: 0 auto; padding: 28px 0 22px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 20px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 11px; font-size: 20px; font-weight: 700; letter-spacing: .16em; }
+.brand-mark { display: grid; place-items: center; width: 26px; height: 26px; color: var(--bg); background: var(--gold); }
+.run-status { display: flex; align-items: center; gap: 8px; color: var(--muted); font: 10px "Space Mono", monospace; letter-spacing: .08em; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.status-dot.active { background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+.status-dot.alert { background: var(--ember); box-shadow: 0 0 12px var(--ember); }
+.game-layout { display: grid; grid-template-columns: minmax(500px, 960px) 230px; gap: 28px; align-items: start; padding: 38px 0 30px; }
+.arena-frame { min-width: 0; }
+.arena-heading { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--muted); font: 10px "Space Mono", monospace; letter-spacing: .11em; }
+.arena-heading span:last-child { color: var(--gold); }
+.canvas-wrap { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--arena); box-shadow: 0 18px 42px rgba(0,0,0,.35); }
+#gameCanvas { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; background: #121f20; }
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; background: rgba(8, 13, 15, .88); }
+.overlay.hidden, .level-overlay.hidden { display: none; }
+.kicker, .panel-label { margin: 0; color: var(--gold); font: 10px "Space Mono", monospace; letter-spacing: .14em; }
+.overlay h1 { margin: 15px 0 8px; font-size: clamp(42px, 8vw, 78px); line-height: .9; letter-spacing: .03em; }
+.overlay p:not(.kicker) { margin: 0 0 26px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.primary-button, .secondary-button { border: 0; cursor: pointer; transition: transform .16s ease, filter .16s ease; }
+.primary-button { padding: 13px 24px; color: var(--bg); background: var(--gold); box-shadow: 4px 4px 0 var(--ember); font-weight: 700; letter-spacing: .08em; }
+.primary-button span { padding-left: 8px; font-size: 18px; }
+.primary-button:hover, .secondary-button:hover { filter: brightness(1.13); transform: translateY(-2px); }
+.level-overlay { position: absolute; top: 22px; left: 50%; display: flex; flex-direction: column; gap: 4px; transform: translateX(-50%); padding: 11px 22px; text-align: center; background: rgba(22, 31, 31, .94); border: 1px solid var(--gold); box-shadow: 0 0 24px rgba(255, 209, 102, .18); animation: level-in .25s ease-out; }
+.level-overlay strong { color: var(--gold); font-size: 22px; letter-spacing: .08em; }
+.level-overlay span { color: var(--muted); font-size: 12px; white-space: nowrap; }
+@keyframes level-in { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.sidebar { display: grid; gap: 13px; }
+.panel { padding: 18px; background: var(--panel); border: 1px solid var(--line); }
+.hero-panel { border-top: 2px solid var(--ember); }
+.hero-row { display: flex; align-items: center; gap: 11px; margin: 17px 0 20px; }
+.hero-icon { display: grid; place-items: center; width: 37px; height: 37px; color: var(--bg); background: var(--mint); transform: rotate(45deg); }
+.hero-icon::first-letter { transform: rotate(-45deg); }
+.hero-row strong { display: block; font-size: 15px; letter-spacing: .06em; }
+.hero-row small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+.bar-label, .xp-label { display: flex; justify-content: space-between; color: var(--muted); font: 10px "Space Mono", monospace; }
+.bar-label span:last-child, .xp-label span:last-child { color: var(--ink); }
+.bar { overflow: hidden; height: 7px; margin-top: 8px; background: #293638; }
+.bar span { display: block; height: 100%; width: 100%; background: var(--mint); transition: width .2s ease; }
+.score-panel { display: grid; gap: 16px; }
+.metric { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font: 10px "Space Mono", monospace; }
+.metric strong { color: var(--ink); font-size: 20px; font-weight: 400; }
+.xp-bar { margin-top: -9px; }.xp-bar span { background: var(--gold); }
+.controls-panel { display: grid; gap: 11px; }.key-row { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 12px; }
+.key { display: inline-grid; place-items: center; min-width: 58px; height: 25px; color: var(--ink); background: #2b3a3a; border-bottom: 2px solid #152020; font: 9px "Space Mono", monospace; }
+.secondary-button { width: 100%; padding: 11px; color: var(--ink); background: #263434; border: 1px solid var(--line); font-weight: 600; letter-spacing: .06em; }.secondary-button:disabled { opacity: .4; cursor: not-allowed; }
+footer { color: #526261; text-align: center; font: 10px "Space Mono", monospace; letter-spacing: .1em; } footer span { padding: 0 7px; color: var(--ember); }
+@media (max-width: 850px) { .game-shell { width: min(100% - 24px, 620px); padding-top: 18px; } .game-layout { display: flex; flex-direction: column; gap: 18px; padding-top: 25px; } .sidebar { grid-template-columns: 1fr 1fr; width: 100%; } .hero-panel, .score-panel, .controls-panel, .secondary-button { grid-column: span 2; } }

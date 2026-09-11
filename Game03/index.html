@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMBERFALL // SURVIVAL RUN</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>EMBERFALL</span></div>
+      <div class="run-status"><span id="statusDot" class="status-dot"></span><span id="statusText">READY</span></div>
+    </header>
+
+    <section class="game-layout">
+      <div class="arena-frame">
+        <div class="arena-heading"><span>FIELD // ASHEN LOWLANDS</span><span id="timeLabel">00:00</span></div>
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" width="960" height="600" aria-label="탑뷰 생존 슈팅 게임 화면"></canvas>
+          <div id="startOverlay" class="overlay">
+            <p class="kicker">SURVIVAL PROTOCOL 01</p>
+            <h1>EMBERFALL</h1>
+            <p>움직이면서 몰려오는 적을 버티세요.<br>무기는 가장 가까운 적을 자동으로 공격합니다.</p>
+            <button id="startButton" class="primary-button">RUN START <span>→</span></button>
+          </div>
+          <div id="levelOverlay" class="level-overlay hidden">
+            <p class="kicker">POWER SURGE</p>
+            <strong id="levelMessage">LEVEL UP</strong>
+            <span id="levelDetail">공격이 강화되었습니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="panel hero-panel">
+          <div class="panel-label">SURVIVOR</div>
+          <div class="hero-row"><span class="hero-icon">◆</span><div><strong>ASH WALKER</strong><small>자동 조준 전투원</small></div></div>
+          <div class="bar-label"><span>HP</span><span id="hpText">100 / 100</span></div>
+          <div class="bar"><span id="hpBar"></span></div>
+        </section>
+        <section class="panel score-panel">
+          <div class="metric"><span>LEVEL</span><strong id="levelText">01</strong></div>
+          <div class="xp-label"><span>EXPERIENCE</span><span id="xpText">0 / 30</span></div>
+          <div class="bar xp-bar"><span id="xpBar"></span></div>
+          <div class="metric"><span>DEFEATED</span><strong id="killText">000</strong></div>
+        </section>
+        <section class="panel controls-panel">
+          <div class="panel-label">CONTROLS</div>
+          <div class="key-row"><span class="key">W A S D</span><span>이동</span></div>
+          <div class="key-row"><span class="key">P</span><span>일시정지</span></div>
+        </section>
+        <button id="pauseButton" class="secondary-button" disabled>일시정지</button>
+      </aside>
+    </section>
+    <footer>HTML5 <span>•</span> CSS3 <span>•</span> JAVASCRIPT <span>•</span> NO LIBRARIES</footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
